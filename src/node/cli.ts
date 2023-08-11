@@ -1,13 +1,19 @@
-import cac from "cac";
+import { cac } from "cac";
 import { createDevServer } from "./dev";
+import { resolve } from "path";
 
-const cli = cac("nikola").version("1.0.0").help();
+const version = require("../../package.json").version;
+const cli = cac("nikola").version(version).help();
 
-cli.command("dev [root]", "start dev server").action(async (root: string) => {
-  const server = await createDevServer(root);
-  await server.listen();
-  server.printUrls();
-});
+cli
+  .command("[root]", "start dev server")
+  .alias("dev")
+  .action(async (root: string) => {
+    root = root ? resolve(root) : process.cwd();
+    const server = await createDevServer(root);
+    await server.listen();
+    server.printUrls();
+  });
 
 cli
   .command("build [root]", "build in production")
