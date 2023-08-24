@@ -1,5 +1,5 @@
-import { App } from "./App";
-import { renderToString } from "react-dom/server";
+import { App } from './App';
+import { renderToString } from 'react-dom/server';
 
 // For ssr component render
 export function render() {
