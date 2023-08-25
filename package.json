@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prepare": "husky install",
     "start": "tsup --watch",
     "build": "tsup",
-    "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx --quiet ./"
+    "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx --quiet ./",
+    "prepare": "husky install",
+    "test:init": "vitest --ui",
+    "prepare:e2e": "tsx scripts/prepare-e2e.ts",
+    "test:e2e": "playwright test"
   },
   "bin": {
     "nikola": "bin/nikola.js"
@@ -34,21 +37,26 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
+    "@playwright/test": "^1.37.1",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^20.4.2",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
+    "@vitest/ui": "^0.34.2",
     "commitlint": "^17.7.1",
     "eslint": "^8.47.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "execa": "^8.0.1",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "ora": "^7.0.1",
     "rollup": "^3.28.1",
     "tsup": "^7.2.0",
-    "typescript": "^5.1.6"
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.6",
+    "vitest": "^0.34.2"
   }
 }
