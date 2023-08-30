@@ -5,15 +5,26 @@ import type { RollupOutput } from 'rollup';
 import fs from 'fs-extra';
 import ora from 'ora';
 import { pathToFileURL } from 'url';
-export async function bundle(root: string) {
+import { SiteConfig } from 'shared/types';
+import pluginReact from '@vitejs/plugin-react';
+import { pluginConfig } from './plugin-nikola/config';
+import * as path from 'path';
+
+export async function bundle(root: string, config: SiteConfig) {
   try {
     const resolveViteConfig = (isServer: boolean): InlineConfig => {
       return {
         mode: 'production',
         root,
+        plugins: [pluginReact(), pluginConfig(config)],
+        ssr: {
+          // 注意加上这个配置，防止 cjs 产物中 require ESM 的产物，因为 react-router-dom 的产物为 ESM 格式
+          noExternal: ['react-router-dom']
+        },
         build: {
+          minify: false,
           ssr: isServer,
-          outDir: isServer ? '.temp' : 'build',
+          outDir: isServer ? path.join(root, '.temp') : 'build',
           rollupOptions: {
             input: isServer ? SERVER_ENTRY_PATH : CLIENT_ENTRY_PATH,
             output: {
@@ -73,8 +84,8 @@ export async function renderPage(
   await fs.remove(join(root, '.temp'));
 }
 
-export async function build(root: string) {
-  const [clientBundle] = await bundle(root);
+export async function build(root: string = process.cwd(), config: SiteConfig) {
+  const [clientBundle] = await bundle(root, config);
   const serverEntryPath = join(root, '.temp', 'ssr-entry.js');
   const { render } = await import(pathToFileURL(serverEntryPath).toString());
   await renderPage(render, root, clientBundle);
