@@ -6,8 +6,7 @@ import fs from 'fs-extra';
 import ora from 'ora';
 import { pathToFileURL } from 'url';
 import { SiteConfig } from 'shared/types';
-import pluginReact from '@vitejs/plugin-react';
-import { pluginConfig } from './plugin-nikola/config';
+import { createVitePlugins } from './vitePlugins';
 import * as path from 'path';
 
 export async function bundle(root: string, config: SiteConfig) {
@@ -16,7 +15,7 @@ export async function bundle(root: string, config: SiteConfig) {
       return {
         mode: 'production',
         root,
-        plugins: [pluginReact(), pluginConfig(config)],
+        plugins: createVitePlugins(config),
         ssr: {
           // 注意加上这个配置，防止 cjs 产物中 require ESM 的产物，因为 react-router-dom 的产物为 ESM 格式
           noExternal: ['react-router-dom']
