@@ -15,12 +15,12 @@ export const rehypePluginPreWrapper: Plugin<[], Root> = () => {
       ) {
         const codeNode = node.children[0];
         const codeClassName = codeNode.properties?.className?.toString() || '';
-        // language-xxx
         const lang = codeClassName.split('-')[1];
 
         codeNode.properties.className = '';
 
         const clonedNode: Element = {
+          properties: null,
           type: 'element',
           tagName: 'pre',
           children: node.children,

@@ -2,7 +2,6 @@ import { resolve } from 'path';
 import fs from 'fs-extra';
 import { loadConfigFromFile } from 'vite';
 import { UserConfig, SiteConfig } from 'shared/types/index';
-import { normalizePath } from 'vite';
 
 type RawConfig =
   | UserConfig
@@ -28,7 +27,7 @@ export async function resolveUserConfig(
   mode: 'development' | 'production'
 ) {
   // 1. 获取配置文件路径
-  const configPath = normalizePath(getUserConfigPath(root));
+  const configPath = getUserConfigPath(root);
   // 2. 读取配置文件的内容
   const result = await loadConfigFromFile(
     {

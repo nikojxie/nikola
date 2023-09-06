@@ -87,5 +87,9 @@ export async function build(root: string = process.cwd(), config: SiteConfig) {
   const [clientBundle] = await bundle(root, config);
   const serverEntryPath = join(root, '.temp', 'ssr-entry.js');
   const { render } = await import(pathToFileURL(serverEntryPath).toString());
-  await renderPage(render, root, clientBundle);
+  try {
+    await renderPage(render, root, clientBundle);
+  } catch (e) {
+    console.log('Render page error.\n', e);
+  }
 }
