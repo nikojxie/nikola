@@ -17,10 +17,7 @@ export const rehypePluginPreWrapper: Plugin<[], Root> = () => {
         const codeClassName = codeNode.properties?.className?.toString() || '';
         const lang = codeClassName.split('-')[1];
 
-        codeNode.properties.className = '';
-
         const clonedNode: Element = {
-          properties: null,
           type: 'element',
           tagName: 'pre',
           children: node.children,
