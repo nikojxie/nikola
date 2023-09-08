@@ -17,3 +17,5 @@ export const SERVER_ENTRY_PATH = join(
 );
 
 export const DEFAULT_TEMPLATE_PATH = join(PACKAGE_ROOT, 'template.html');
+
+export const MD_REGEX = /\.mdx?$/;
