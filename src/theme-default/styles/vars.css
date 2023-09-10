@@ -1,0 +1,356 @@
+/**
+ * Colors Base
+ *
+ * These are the pure base color presets. Most of the time, you should not be
+ * using these colors directly in the theme but rather use "Colors Theme"
+ * instead because those are "Theme (light or dark)" dependant.
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --nikola-c-white: #ffffff;
+  --nikola-c-white-soft: #f9f9f9;
+  --nikola-c-white-mute: #f1f1f1;
+
+  --nikola-c-black: #1a1a1a;
+  --nikola-c-black-pure: #000000;
+  --nikola-c-black-soft: #242424;
+  --nikola-c-black-mute: #2f2f2f;
+
+  --nikola-c-gray: #8e8e8e;
+  --nikola-c-gray-light-1: #aeaeae;
+  --nikola-c-gray-light-2: #c7c7c7;
+  --nikola-c-gray-light-3: #d1d1d1;
+  --nikola-c-gray-light-4: #e5e5e5;
+  --nikola-c-gray-light-5: #f2f2f2;
+  --nikola-c-gray-dark-1: #636363;
+  --nikola-c-gray-dark-2: #484848;
+  --nikola-c-gray-dark-3: #3a3a3a;
+  --nikola-c-gray-dark-4: #282828;
+  --nikola-c-gray-dark-5: #202020;
+
+  --nikola-c-divider-light-1: rgba(60, 60, 60, 0.29);
+  --nikola-c-divider-light-2: rgba(60, 60, 60, 0.12);
+  --nikola-c-divider-dark-1: rgba(84, 84, 84, 0.65);
+  --nikola-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+
+  --nikola-c-indigo: #213547;
+  --nikola-c-indigo-soft: #476582;
+  --nikola-c-indigo-light: #aac8e4;
+  --nikola-c-indigo-lighter: #c9def1;
+  --nikola-c-indigo-dark: #1d2f3f;
+  --nikola-c-indigo-darker: #14212e;
+
+  --nikola-c-text-light-1: var(--nikola-c-indigo);
+  --nikola-c-text-light-2: rgba(60, 60, 60, 0.7);
+  --nikola-c-text-light-3: rgba(60, 60, 60, 0.33);
+  --nikola-c-text-light-4: rgba(60, 60, 60, 0.18);
+
+  --nikola-c-text-dark-1: rgba(255, 255, 255, 0.87);
+  --nikola-c-text-dark-2: rgba(235, 235, 235, 0.6);
+  --nikola-c-text-dark-3: rgba(235, 235, 235, 0.38);
+  --nikola-c-text-dark-4: rgba(235, 235, 235, 0.18);
+
+  --nikola-c-green: #21b8a3;
+  --nikola-c-green-light: #41c6b0;
+  --nikola-c-green-lighter: #41c6b0;
+  --nikola-c-green-dark: #149684;
+  --nikola-c-green-darker: #149684;
+  --nikola-c-green-dimm: #062521;
+
+  --nikola-c-green-dimm-1: rgba(66, 184, 131, 0.5);
+  --nikola-c-green-dimm-2: rgba(66, 184, 131, 0.25);
+  --nikola-c-green-dimm-3: rgba(66, 184, 131, 0.05);
+
+  --nikola-c-blue: #646cff;
+  --nikola-c-blue-light: #747bff;
+  --nikola-c-blue-lighter: #9499ff;
+  --nikola-c-blue-lightest: #bcc0ff;
+  --nikola-c-blue-dark: #535bf2;
+  --nikola-c-blue-darker: #454ce1;
+  --nikola-c-blue-dimm: rgba(100, 108, 255, 0.08);
+
+  --nikola-c-yellow: #ffc517;
+  --nikola-c-yellow-light: #fcd253;
+  --nikola-c-yellow-lighter: #fcfc7c;
+  --nikola-c-yellow-darker: #ad850e;
+  --nikola-c-yellow-dimm-1: rgba(255, 197, 23, 0.5);
+  --nikola-c-yellow-dimm-2: rgba(255, 197, 23, 0.25);
+  --nikola-c-yellow-dimm-3: rgba(255, 197, 23, 0.05);
+
+  --nikola-c-red: #ed3c50;
+  --nikola-c-red-light: #f54e82;
+  --nikola-c-red-lighter: #fd1d7c;
+  --nikola-c-red-darker: #ab2131;
+  --nikola-c-red-dimm-1: rgba(237, 60, 80, 0.5);
+  --nikola-c-red-dimm-2: rgba(237, 60, 80, 0.25);
+  --nikola-c-red-dimm-3: rgba(237, 60, 80, 0.05);
+}
+
+/**
+   * Colors Theme
+   * -------------------------------------------------------------------------- */
+
+:root {
+  --nikola-c-bg: var(--nikola-c-white);
+  --nikola-c-bg-soft: var(--nikola-c-white-soft);
+  --nikola-c-bg-mute: var(--nikola-c-white-mute);
+  --nikola-c-bg-alt: var(--nikola-c-white-soft);
+
+  --nikola-c-divider: var(--nikola-c-divider-light-1);
+  --nikola-c-divider-light: var(--nikola-c-divider-light-2);
+
+  --nikola-c-text-1: var(--nikola-c-text-light-1);
+  --nikola-c-text-2: var(--nikola-c-text-light-2);
+  --nikola-c-text-3: var(--nikola-c-text-light-3);
+  --nikola-c-text-4: var(--nikola-c-text-light-4);
+
+  --nikola-c-text-code: var(--nikola-c-indigo-soft);
+
+  --nikola-c-brand: var(--nikola-c-green);
+  --nikola-c-brand-light: var(--nikola-c-green-light);
+  --nikola-c-brand-lighter: var(--nikola-c-green-lighter);
+  --nikola-c-brand-dark: var(--nikola-c-green-dark);
+  --nikola-c-brand-darker: var(--nikola-c-green-darker);
+}
+
+.dark {
+  --nikola-c-bg: var(--nikola-c-black-soft);
+  --nikola-c-bg-soft: var(--nikola-c-black-mute);
+  --nikola-c-bg-mute: var(--nikola-c-gray-dark-3);
+  --nikola-c-bg-alt: var(--nikola-c-black);
+
+  --nikola-c-divider: var(--nikola-c-divider-dark-1);
+  --nikola-c-divider-light: var(--nikola-c-divider-dark-2);
+
+  --nikola-c-divider-inverse: var(--nikola-c-divider-light-1);
+  --nikola-c-divider-inverse-light: var(--nikola-c-divider-light-2);
+
+  --nikola-c-text-1: var(--nikola-c-text-dark-1);
+  --nikola-c-text-2: var(--nikola-c-text-dark-2);
+  --nikola-c-text-3: var(--nikola-c-text-dark-3);
+  --nikola-c-text-4: var(--nikola-c-text-dark-4);
+
+  --nikola-c-text-inverse-1: var(--nikola-c-text-light-1);
+  --nikola-c-text-inverse-2: var(--nikola-c-text-light-2);
+  --nikola-c-text-inverse-3: var(--nikola-c-text-light-3);
+  --nikola-c-text-inverse-4: var(--nikola-c-text-light-4);
+
+  --nikola-c-text-code: var(--nikola-c-indigo-lighter);
+}
+
+/**
+   * Typography
+   * -------------------------------------------------------------------------- */
+
+:root {
+  --nikola-font-family-base: 'Inter var experimental', 'Inter var',
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --nikola-font-family-mono: Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/**
+   * Layouts
+   * -------------------------------------------------------------------------- */
+
+:root {
+  --nikola-layout-max-width: 1440px;
+}
+
+/**
+   * Component: Code
+   * -------------------------------------------------------------------------- */
+
+:root {
+  --nikola-code-line-height: 1.7;
+  --nikola-code-font-size: 0.875em;
+
+  --nikola-code-block-color: var(--nikola-c-text-dark-1);
+  --nikola-code-block-bg: #292d3e;
+
+  --nikola-code-line-highlight-color: rgba(0, 0, 0, 0.5);
+  --nikola-code-line-number-color: var(--nikola-c-text-dark-3);
+
+  --nikola-code-copy-code-hover-bg: rgba(255, 255, 255, 0.05);
+  --nikola-code-copy-code-active-text: var(--nikola-c-text-dark-2);
+}
+
+/**
+   * Icons
+   * -------------------------------------------------------------------------- */
+
+:root {
+  --nikola-icon-copy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' height='20' width='20' stroke='rgba(128,128,128,1)' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2'/%3E%3C/svg%3E");
+  --nikola-icon-copied: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' height='20' width='20' stroke='rgba(128,128,128,1)' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-6 9 2 2 4-4'/%3E%3C/svg%3E");
+  --nikola-icon-tip: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M512 960C264.58 960 64 759.42 64 512S264.58 64 512 64s448 200.58 448 448-200.58 448-448 448z m0-832c-212.08 0-384 171.92-384 384s171.92 384 384 384 384-171.92 384-384-171.92-384-384-384z m0 112c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z m0 160c-17.67 0-32 14.33-32 32v320c0 17.67 14.33 32 32 32 17.67 0 32-14.33 32-32V432c0-17.67-14.33-32-32-32z' fill='%2321b8a3'/%3E%3C/svg%3E");
+}
+
+.dark {
+  --nikola-code-block-bg: var(--nikola-c-bg-alt);
+}
+
+/**
+   * Z-indexes
+   * -------------------------------------------------------------------------- */
+
+:root {
+  --nikola-z-index-local-nav: 10;
+  --nikola-z-index-nav: 20;
+  --nikola-z-index-layout-top: 30;
+  --nikola-z-index-backdrop: 40;
+  --nikola-z-index-sidebar: 50;
+  --nikola-z-index-footer: 60;
+}
+
+/**
+   * Component: Button
+   * -------------------------------------------------------------------------- */
+
+:root {
+  --nikola-button-brand-border: var(--nikola-c-brand-light);
+  --nikola-button-brand-text: var(--nikola-c-text-dark-1);
+  --nikola-button-brand-bg: var(--nikola-c-brand);
+  --nikola-button-brand-hover-border: var(--nikola-c-brand-light);
+  --nikola-button-brand-hover-text: var(--nikola-c-text-dark-1);
+  --nikola-button-brand-hover-bg: var(--nikola-c-brand-light);
+  --nikola-button-brand-active-border: var(--nikola-c-brand-light);
+  --nikola-button-brand-active-text: var(--nikola-c-text-dark-1);
+  --nikola-button-brand-active-bg: var(--nikola-button-brand-bg);
+
+  --nikola-button-alt-border: var(--nikola-c-gray-light-3);
+  --nikola-button-alt-text: var(--nikola-c-text-light-1);
+  --nikola-button-alt-bg: var(--nikola-c-gray-light-5);
+  --nikola-button-alt-hover-border: var(--nikola-c-gray-light-3);
+  --nikola-button-alt-hover-text: var(--nikola-c-text-light-1);
+  --nikola-button-alt-hover-bg: var(--nikola-c-gray-light-4);
+  --nikola-button-alt-active-border: var(--nikola-c-gray-light-3);
+  --nikola-button-alt-active-text: var(--nikola-c-text-light-1);
+  --nikola-button-alt-active-bg: var(--nikola-c-gray-light-3);
+
+  --nikola-button-sponsor-border: var(--nikola-c-gray-light-3);
+  --nikola-button-sponsor-text: var(--nikola-c-text-light-2);
+  --nikola-button-sponsor-bg: transparent;
+  --nikola-button-sponsor-hover-border: var(--nikola-c-sponsor);
+  --nikola-button-sponsor-hover-text: var(--nikola-c-sponsor);
+  --nikola-button-sponsor-hover-bg: transparent;
+  --nikola-button-sponsor-active-border: var(--nikola-c-sponsor);
+  --nikola-button-sponsor-active-text: var(--nikola-c-sponsor);
+  --nikola-button-sponsor-active-bg: transparent;
+}
+
+.dark {
+  --nikola-button-brand-border: var(--nikola-c-brand-light);
+  --nikola-button-brand-text: var(--nikola-c-text-dark-1);
+  --nikola-button-brand-bg: var(--nikola-c-brand-dark);
+  --nikola-button-brand-hover-border: var(--nikola-c-brand-lighter);
+  --nikola-button-brand-hover-text: var(--nikola-c-text-dark-1);
+  --nikola-button-brand-hover-bg: var(--nikola-c-brand);
+  --nikola-button-brand-active-border: var(--nikola-c-brand-lighter);
+  --nikola-button-brand-active-text: var(--nikola-c-text-dark-1);
+  --nikola-button-brand-active-bg: var(--nikola-button-brand-bg);
+
+  --nikola-button-alt-border: var(--nikola-c-gray-dark-2);
+  --nikola-button-alt-text: var(--nikola-c-text-dark-1);
+  --nikola-button-alt-bg: var(--nikola-c-bg-mute);
+  --nikola-button-alt-hover-border: var(--nikola-c-gray-dark-2);
+  --nikola-button-alt-hover-text: var(--nikola-c-text-dark-1);
+  --nikola-button-alt-hover-bg: var(--nikola-c-gray-dark-2);
+  --nikola-button-alt-active-border: var(--nikola-c-gray-dark-2);
+  --nikola-button-alt-active-text: var(--nikola-c-text-dark-1);
+  --nikola-button-alt-active-bg: var(--nikola-button-alt-bg);
+
+  --nikola-button-sponsor-border: var(--nikola-c-gray-dark-1);
+  --nikola-button-sponsor-text: var(--nikola-c-text-dark-2);
+}
+
+/**
+   * Component: Custom Block
+   * -------------------------------------------------------------------------- */
+
+:root {
+  --nikola-custom-block-code-font-size: 13px;
+
+  --nikola-custom-block-info-border: var(--nikola-c-divider-light);
+  --nikola-custom-block-info-text: var(--nikola-c-text-2);
+  --nikola-custom-block-info-bg: var(--nikola-c-white-soft);
+  --nikola-custom-block-info-code-bg: var(--nikola-c-gray-light-4);
+
+  --nikola-custom-block-tip-border: var(--nikola-c-green-dimm-1);
+  --nikola-custom-block-tip-text: var(--nikola-c-green-darker);
+  --nikola-custom-block-tip-bg: var(--nikola-c-green-dimm-3);
+  --nikola-custom-block-tip-code-bg: var(--nikola-custom-block-tip-bg);
+
+  --nikola-custom-block-warning-border: var(--nikola-c-yellow-dimm-1);
+  --nikola-custom-block-warning-text: var(--nikola-c-yellow-darker);
+  --nikola-custom-block-warning-bg: var(--nikola-c-yellow-dimm-3);
+  --nikola-custom-block-warning-code-bg: var(--nikola-custom-block-warning-bg);
+
+  --nikola-custom-block-danger-border: var(--nikola-c-red-dimm-1);
+  --nikola-custom-block-danger-text: var(--nikola-c-red-darker);
+  --nikola-custom-block-danger-bg: var(--nikola-c-red-dimm-3);
+  --nikola-custom-block-danger-code-bg: var(--nikola-custom-block-danger-bg);
+}
+
+.dark {
+  --nikola-custom-block-info-border: var(--nikola-c-divider-light);
+  --nikola-custom-block-info-bg: var(--nikola-c-black-mute);
+  --nikola-custom-block-info-code-bg: var(--nikola-c-gray-dark-4);
+
+  --nikola-custom-block-tip-border: var(--nikola-c-green-dimm-2);
+  --nikola-custom-block-tip-text: var(--nikola-c-green-light);
+
+  --nikola-custom-block-warning-border: var(--nikola-c-yellow-dimm-2);
+  --nikola-custom-block-warning-text: var(--nikola-c-yellow-light);
+
+  --nikola-custom-block-danger-border: var(--nikola-c-red-dimm-2);
+  --nikola-custom-block-danger-text: var(--nikola-c-red-light);
+}
+
+/**
+   * Component: Nav
+   * -------------------------------------------------------------------------- */
+
+:root {
+  --nikola-nav-height: 56px;
+}
+
+/**
+   * Component: Sidebar
+   * -------------------------------------------------------------------------- */
+
+:root {
+  --nikola-sidebar-width: 272px;
+}
+
+/**
+   * Component: Home
+   * -------------------------------------------------------------------------- */
+
+:root {
+  --nikola-home-hero-name-color: transparent;
+  --nikola-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    var(--nikola-c-brand) 30%,
+    #41d1ff
+  );
+
+  --nikola-home-hero-image-background-image: none;
+  --nikola-home-hero-image-filter: none;
+}
+
+/**
+   * Shadows
+   * -------------------------------------------------------------------------- */
+
+:root {
+  --nikola-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.06);
+  --nikola-shadow-2: 0 3px 12px rgba(0, 0, 0, 0.07),
+    0 1px 4px rgba(0, 0, 0, 0.07);
+  --nikola-shadow-3: 0 12px 32px rgba(0, 0, 0, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+  --nikola-shadow-4: 0 14px 44px rgba(0, 0, 0, 0.12),
+    0 3px 9px rgba(0, 0, 0, 0.12);
+  --nikola-shadow-5: 0 18px 56px rgba(0, 0, 0, 0.16),
+    0 4px 12px rgba(0, 0, 0, 0.16);
+}

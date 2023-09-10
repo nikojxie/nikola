@@ -7,7 +7,7 @@ test('Verify that the page renders properly', async ({ page }) => {
 
   const res = await page.evaluate(async () => {
     const pageContent = document.body.innerText;
-    return pageContent.includes('This is Layout Component');
+    return pageContent.includes('Common Content');
   });
   expect(res).toBe(true);
 });
