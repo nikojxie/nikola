@@ -354,3 +354,7 @@
   --nikola-shadow-5: 0 18px 56px rgba(0, 0, 0, 0.16),
     0 4px 12px rgba(0, 0, 0, 0.16);
 }
+
+:root {
+  --nikola-aside-width: 268px;
+}

@@ -1,0 +1,6 @@
+.clip {
+  background: var(--nikola-home-hero-name-background);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: var(--nikola-home-hero-name-color);
+}

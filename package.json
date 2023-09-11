@@ -47,12 +47,14 @@
     "remark-mdx-frontmatter": "^3.0.0",
     "remark-stringify": "^10.0.3",
     "shiki": "^0.14.4",
+    "sirv": "^2.0.3",
     "unocss": "^0.55.7",
     "vite": "^4.4.5"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
+    "@iconify-json/carbon": "^1.1.21",
     "@playwright/test": "^1.37.1",
     "@types/fs-extra": "^11.0.1",
     "@types/hast": "^2.3.4",
@@ -80,6 +82,7 @@
     "remark-parse": "^10.0.2",
     "remark-rehype": "^10.1.0",
     "rollup": "^3.28.1",
+    "sass": "^1.66.1",
     "tsup": "^7.2.0",
     "tsx": "^3.12.7",
     "typescript": "^5.1.6",

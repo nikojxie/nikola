@@ -6,6 +6,11 @@
     "rootDir": ".",
     "target": "esnext",
     "jsx": "react-jsx",
-    "esModuleInterop": true
-  }
+    "esModuleInterop": true,
+    "paths": {
+      "@runtime": ["./runtime/index.ts"],
+      "shared/*": ["shared/*"]
+    }
+  },
+  "include": ["e2e/**/*.ts", "src/**/*"]
 }

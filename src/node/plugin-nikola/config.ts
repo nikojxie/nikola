@@ -3,6 +3,8 @@ import { Plugin } from 'vite';
 import { SiteConfig } from 'shared/types/index';
 import { PACKAGE_ROOT } from '../../node/constants';
 import { join } from 'path';
+import sirv from 'sirv';
+import fs from 'fs-extra';
 
 const SITE_DATA_ID = 'nikola:site-data';
 
@@ -40,8 +42,19 @@ export function pluginConfig(
           alias: {
             '@runtime': join(PACKAGE_ROOT, 'src', 'runtime', 'index.ts')
           }
+        },
+        css: {
+          modules: {
+            localsConvention: 'camelCaseOnly'
+          }
         }
       };
+    },
+    configureServer(server) {
+      const publicDir = join(config.root, 'public');
+      if (fs.pathExistsSync(publicDir)) {
+        server.middlewares.use(sirv(publicDir));
+      }
     }
   };
 }
