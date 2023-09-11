@@ -62,6 +62,7 @@ export interface PageData {
 export interface PageModule {
   default: ComponentType;
   frontmatter?: FrontMatter;
+  toc?: Header[];
   [key: string]: unknown;
 }
 
@@ -96,3 +97,7 @@ export interface FrontMatter {
   features?: Feature[];
   hero?: Hero;
 }
+
+export type PropsWithNikola = {
+  __nikola?: boolean;
+};

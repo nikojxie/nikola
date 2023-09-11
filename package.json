@@ -27,6 +27,10 @@
     ]
   },
   "dependencies": {
+    "@babel/core": "^7.22.17",
+    "@babel/helper-plugin-utils": "^7.22.5",
+    "@babel/preset-react": "^7.22.15",
+    "@babel/traverse": "^7.22.17",
     "@loadable/component": "^5.15.3",
     "@mdx-js/rollup": "^2.3.0",
     "@vitejs/plugin-react": "^4.0.3",
@@ -36,6 +40,7 @@
     "fs-extra": "^11.1.1",
     "github-slugger": "^2.0.0",
     "hast-util-from-html": "^2.0.1",
+    "lodash-es": "^4.17.21",
     "ora": "^7.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -58,6 +63,7 @@
     "@playwright/test": "^1.37.1",
     "@types/fs-extra": "^11.0.1",
     "@types/hast": "^2.3.4",
+    "@types/lodash-es": "^4.17.9",
     "@types/mdast": "^3.0.10",
     "@types/node": "^20.4.2",
     "@types/react": "^18.2.15",

@@ -6,6 +6,9 @@ import { SiteConfig } from 'shared/types';
 import { pluginMdx } from './plugin-mdx';
 import pluginUnocss from 'unocss/vite';
 import unocssOptions from './unocssOptions';
+import { PACKAGE_ROOT } from './constants';
+import babelPluginNikola from './babel-plugin-nikola';
+import path from 'path';
 
 export async function createVitePlugins(
   config: SiteConfig,
@@ -16,7 +19,13 @@ export async function createVitePlugins(
     pluginUnocss(unocssOptions),
     pluginIndexHtml(),
     pluginReact({
-      jsxRuntime: 'automatic'
+      jsxRuntime: 'automatic',
+      jsxImportSource: isSSR
+        ? path.join(PACKAGE_ROOT, 'src', 'runtime')
+        : 'react',
+      babel: {
+        plugins: [babelPluginNikola]
+      }
     }),
     pluginConfig(config, restartServer),
     pluginRoutes({

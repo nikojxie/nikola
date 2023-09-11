@@ -7,7 +7,7 @@ test('Verify that the page renders properly', async ({ page }) => {
 
   const res = await page.evaluate(async () => {
     const pageContent = document.body.innerText;
-    return pageContent.includes('Common Content');
+    return pageContent.includes('Nikola');
   });
   expect(res).toBe(true);
 });

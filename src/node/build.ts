@@ -1,5 +1,9 @@
 import { InlineConfig, build as viteBuild } from 'vite';
-import { CLIENT_ENTRY_PATH, SERVER_ENTRY_PATH } from './constants';
+import {
+  CLIENT_ENTRY_PATH,
+  SERVER_ENTRY_PATH,
+  MASK_SPLITTER
+} from './constants';
 import path, { join, dirname } from 'path';
 import type { RollupOutput } from 'rollup';
 import fs from 'fs-extra';
@@ -8,6 +12,7 @@ import { SiteConfig } from 'shared/types';
 import { createVitePlugins } from './vitePlugins';
 import { Route } from './plugin-routes';
 import { pathToFileURL } from 'url';
+import { RenderResult } from '../runtime/ssr-entry';
 
 export async function bundle(root: string, config: SiteConfig) {
   const resolveViteConfig = async (
@@ -18,8 +23,8 @@ export async function bundle(root: string, config: SiteConfig) {
       root,
       plugins: await createVitePlugins(config, undefined, isServer),
       ssr: {
-        // 注意加上这个配置，防止 cjs 产物中 require ESM 的产物，因为 react-router-dom 的产物为 ESM 格式
-        noExternal: ['react-router-dom']
+        // 防止 cjs 产物中 require ESM 的产物，因为 react-router-dom 的产物为 ESM 格式
+        noExternal: ['react-router-dom', 'lodash-es']
       },
       build: {
         minify: false,
@@ -51,7 +56,7 @@ export async function bundle(root: string, config: SiteConfig) {
 }
 
 export async function renderPages(
-  render: (url: string) => string,
+  render: (url: string) => RenderResult,
   routes: Route[],
   root: string,
   clientBundle: RollupOutput
@@ -63,7 +68,8 @@ export async function renderPages(
   return Promise.all(
     routes.map(async (route) => {
       const routePath = route.path;
-      const appHtml = render(routePath);
+      const { appHtml, nikolaToPathMap, propsData } = await render(routePath);
+      await buildNikolas(root, nikolaToPathMap);
       const html = `
 <!DOCTYPE html>
 <html>
@@ -85,6 +91,66 @@ export async function renderPages(
       await fs.writeFile(join(root, 'build', fileName), html);
     })
   );
+}
+
+async function buildNikolas(
+  root: string,
+  nikolaPathToMap: Record<string, string>
+) {
+  // 根据 nikolaPathToMap 拼接模块代码内容
+  const nikolasInjectCode = `
+    ${Object.entries(nikolaPathToMap)
+      .map(
+        ([nikolaName, nikolaPath]) =>
+          `import { ${nikolaName} } from '${nikolaPath}';`
+      )
+      .join('')}
+window.NIKOLAS = { ${Object.keys(nikolaPathToMap).join(', ')} };
+window.NIKOLA_PROPS = JSON.parse(
+  document.getElementById('nikola-props').textContent
+);
+  `;
+  const injectId = 'nikola:inject';
+  return viteBuild({
+    mode: 'production',
+    build: {
+      // 输出目录
+      outDir: path.join(root, '.temp'),
+      rollupOptions: {
+        input: injectId
+      }
+    },
+    plugins: [
+      // 重点插件，用来加载拼接的 Nikolas 注册模块的代码
+      {
+        name: 'nikola:inject',
+        enforce: 'post',
+        resolveId(id) {
+          if (id.includes(MASK_SPLITTER)) {
+            const [originId, importer] = id.split(MASK_SPLITTER);
+            return this.resolve(originId, importer, { skipSelf: true });
+          }
+
+          if (id === injectId) {
+            return id;
+          }
+        },
+        load(id) {
+          if (id === injectId) {
+            return nikolasInjectCode;
+          }
+        },
+        // 对于 Nikolas Bundle，只需要 JS 即可，其它资源文件可以删除
+        generateBundle(_, bundle) {
+          for (const name in bundle) {
+            if (bundle[name].type === 'asset') {
+              delete bundle[name];
+            }
+          }
+        }
+      }
+    ]
+  });
 }
 
 export async function build(root: string = process.cwd(), config: SiteConfig) {

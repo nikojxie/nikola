@@ -1,16 +1,18 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
-    "module": "commonjs",
+    "module": "ESNext",
     "outDir": "dist",
     "rootDir": ".",
-    "target": "esnext",
+    "baseUrl": "src",
+    "target": "ESNext",
     "jsx": "react-jsx",
+    "moduleResolution": "node",
     "esModuleInterop": true,
     "paths": {
       "@runtime": ["./runtime/index.ts"],
       "shared/*": ["shared/*"]
-    }
+    },
+    "types": ["vite/client"]
   },
   "include": ["e2e/**/*.ts", "src/**/*"]
 }

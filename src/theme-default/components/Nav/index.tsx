@@ -3,7 +3,7 @@ import { NavItemWithLink } from 'shared/types';
 import { usePageData } from '@runtime';
 import { SwitchAppearance } from '../SwitchAppearance';
 
-export function MenuItem(item: NavItemWithLink) {
+export function MenuItem({ item }: { item: NavItemWithLink }) {
   return (
     <div className="text-sm font-medium mx-3">
       <a href={item.link} className={styles.link}>
@@ -30,13 +30,13 @@ export function Nav() {
             hover="opacity-60"
             className="w-full h-full text-1rem font-semibold flex items-center"
           >
-            nikola
+            Nikola
           </a>
         </div>
         <div flex="~">
           <div flex="~">
             {nav.map((item) => (
-              <MenuItem {...item} key={item.text} />
+              <MenuItem item={item} key={item.text} />
             ))}
           </div>
           <div before="menu-item-before" flex="~">
