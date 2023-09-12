@@ -5,7 +5,7 @@ import { DataContext } from './hooks';
 
 export interface RenderResult {
   appHtml: string;
-  propsData: unknown[];
+  nikolaProps: unknown[];
   nikolaToPathMap: Record<string, string>;
 }
 
@@ -13,7 +13,6 @@ export interface RenderResult {
 export async function render(pagePath: string) {
   const pageData = await initPageData(pagePath);
   const { clearNikolaData, data } = await import('./jsx-runtime');
-  const { nikolaProps, nikolaToPathMap } = data;
   clearNikolaData();
   const appHtml = renderToString(
     <DataContext.Provider value={pageData}>
@@ -22,6 +21,7 @@ export async function render(pagePath: string) {
       </StaticRouter>
     </DataContext.Provider>
   );
+  const { nikolaProps, nikolaToPathMap } = data;
   return {
     appHtml,
     nikolaProps,

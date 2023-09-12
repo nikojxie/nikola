@@ -6,3 +6,4 @@ node_modules
 __snapshots__
 docs/.temp
 docs/build
+vendors

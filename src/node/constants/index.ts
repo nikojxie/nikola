@@ -21,3 +21,10 @@ export const DEFAULT_TEMPLATE_PATH = join(PACKAGE_ROOT, 'template.html');
 export const MD_REGEX = /\.mdx?$/;
 
 export const MASK_SPLITTER = '!!NIKOLA!!';
+
+export const EXTERNALS = [
+  'react',
+  'react-dom',
+  'react-dom/client',
+  'react/jsx-runtime'
+];
