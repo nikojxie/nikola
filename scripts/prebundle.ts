@@ -46,7 +46,7 @@ async function preBundle(deps: string[]) {
           });
           build.onLoad({ filter: /.*/, namespace: 'dep' }, async (args) => {
             const entryPath = normalizePath(args.path);
-            const res = await import(entryPath);
+            const res = require(entryPath);
             // 拿出所有的具名导出
             const specifiers = Object.keys(res);
             // 导出 ESM 格式的入口代码

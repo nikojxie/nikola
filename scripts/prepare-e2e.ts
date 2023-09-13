@@ -14,19 +14,19 @@ async function prepareE2E() {
   // ensure after build
   if (!fse.existsSync(path.resolve(__dirname, '../dist'))) {
     // exec build command
-    execa.execaCommandSync('pnpm build', {
+    execa.commandSync('pnpm build', {
       cwd: path.resolve(__dirname, '../')
     });
   }
 
-  execa.execaCommandSync('npx playwright install', {
+  execa.commandSync('npx playwright install', {
     cwd: path.join(__dirname, '../'),
     stdout: process.stdout,
     stdin: process.stdin,
     stderr: process.stderr
   });
 
-  execa.execaCommandSync('pnpm i', {
+  execa.commandSync('pnpm i', {
     cwd: exampleDir,
     stdout: process.stdout,
     stdin: process.stdin,
@@ -34,7 +34,7 @@ async function prepareE2E() {
   });
 
   // exec dev command
-  execa.execaCommandSync('pnpm dev', defaultExecaOpts);
+  execa.commandSync('pnpm dev', defaultExecaOpts);
 }
 
 prepareE2E();

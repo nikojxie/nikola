@@ -13,7 +13,7 @@ export default defineConfig({
           text: '教程',
           items: [
             {
-              text: '快速dd上手',
+              text: '快速上手',
               link: '/guide/a'
             },
             {

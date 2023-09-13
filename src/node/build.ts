@@ -15,6 +15,7 @@ import { createVitePlugins } from './vitePlugins';
 import { Route } from './plugin-routes';
 import { pathToFileURL } from 'url';
 import { RenderResult } from '../runtime/ssr-entry';
+import { HelmetData } from 'react-helmet-async';
 
 const CLIENT_OUTPUT = 'build';
 
@@ -134,7 +135,7 @@ window.NIKOLA_PROPS = JSON.parse(
 }
 
 export async function renderPages(
-  render: (url: string) => RenderResult,
+  render: (url: string, helmetContext: object) => RenderResult,
   routes: Route[],
   root: string,
   clientBundle: RollupOutput
@@ -144,24 +145,39 @@ export async function renderPages(
     (chunk) => chunk.type === 'chunk' && chunk.isEntry
   );
   return Promise.all(
-    routes.map(async (route) => {
+    [
+      ...routes,
+      {
+        path: '/404'
+      }
+    ].map(async (route) => {
       const routePath = route.path;
-      const { appHtml, nikolaToPathMap, nikolaProps } = await render(routePath);
+      const helmetContext = {
+        context: {}
+      } as HelmetData;
+      const {
+        appHtml,
+        nikolaToPathMap,
+        nikolaProps = []
+      } = await render(routePath, helmetContext.context);
       const styleAssets = clientBundle.output.filter(
         (chunk) => chunk.type === 'asset' && chunk.fileName.endsWith('.css')
       );
       const nikolaBundle = await buildNikolas(root, nikolaToPathMap);
       const nikolasCode = (nikolaBundle as RollupOutput).output[0].code;
+      const { helmet } = helmetContext.context;
       const normalizeVendorFilename = (fileName: string) =>
         fileName.replace(/\//g, '_') + '.js';
-      await buildNikolas(root, nikolaToPathMap);
       const html = `
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>title</title>
+    ${helmet?.title?.toString() || ''}
+    ${helmet?.meta?.toString() || ''}
+    ${helmet?.link?.toString() || ''}
+    ${helmet?.style?.toString() || ''}
     <meta name="description" content="xxx">
     ${styleAssets
       .map((item) => `<link rel="stylesheet" href="/${item.fileName}">`)
