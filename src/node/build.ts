@@ -81,7 +81,7 @@ async function buildNikolas(
     ${Object.entries(nikolaPathToMap)
       .map(
         ([nikolaName, nikolaPath]) =>
-          `import { ${nikolaName} } from '${nikolaPath}'`
+          `import { ${nikolaName} } from '${nikolaPath}';`
       )
       .join('')}
 window.NIKOLAS = { ${Object.keys(nikolaPathToMap).join(', ')} };
