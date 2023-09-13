@@ -4,6 +4,5 @@ dist
 build
 node_modules
 __snapshots__
-docs/.temp
-docs/build
+docs
 vendors
