@@ -1,6 +1,6 @@
 {
   "name": "@nikoxie/nikola",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Vite SSG framework",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

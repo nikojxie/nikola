@@ -1,3 +1,7 @@
+## [1.0.3](https://github.com/nikojxie/nikola/compare/v1.0.2...v1.0.3) (2023-09-13)
+
+
+
 ## 1.0.2 (2023-09-13)
 
 
