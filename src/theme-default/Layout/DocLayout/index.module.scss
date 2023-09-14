@@ -10,7 +10,7 @@ $sidebarPadding: calc(32px + (100vw - var(--nikola-layout-max-width)) / 2);
     var(--nikola-sidebar-width) + ((100vw - var(--nikola-layout-max-width)) / 2) +
       48px
   );
-  margin-right: $sidebarPadding;
+  // margin-right: $sidebarPadding;
   // 100 vw - sidebar 的宽度
   max-width: calc(100vw - $sidebarWidth);
 }

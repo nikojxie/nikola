@@ -43,7 +43,7 @@ export function Nav() {
             <SwitchAppearance __nikola />
           </div>
           <div className={styles.socialLinkIcon} before="menu-item-before">
-            <a href="/">
+            <a href="https://github.com/nikojxie/nikola">
               <div className="i-carbon-logo-github w-5 h-5 fill-current"></div>
             </a>
           </div>
